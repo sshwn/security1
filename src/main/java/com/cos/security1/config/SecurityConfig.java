@@ -30,6 +30,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .formLogin()
                 .loginPage("/loginForm")
                 .loginProcessingUrl("/login")  // /login 주소가 호출되면 시큐리티가 낚아채서 대신 로그인을 진행해준다. (controller 에 /login을 만들지않아도된다.)
-                .defaultSuccessUrl("/"); // 로그인 성공 시 / 로 이동하지만 (localhost:8080/user 호출하여 로그인페이지 이동 후 로그인하면 localhost:8080/user 로 내가 호출햇던 페이지로 이동함)
+                .defaultSuccessUrl("/") // 로그인 성공 시 / 로 이동하지만 (localhost:8080/user 호출하여 로그인페이지 이동 후 로그인하면 localhost:8080/user 로 내가 호출햇던 페이지로 이동함)
+                .and()
+                .oauth2Login()
+                .loginPage("/loginForm");   // 구글 로그인이 완룓된 뒤의 처리가 필요함.
     }
 }
